@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PokemonListCollectionViewCell: UICollectionViewCell {
     
@@ -60,10 +61,6 @@ extension PokemonListCollectionViewCell {
             }
         }
         
-        DispatchQueue.global().async {
-            if let imageURL = pokemon.profilePicURL, let itemNumber = self.pokemon?.pokemonId {
-                //self.pokemonImageView.setImage(url: imageURL, itemNumber: NSNumber(value: itemNumber))
-            }
-        }
+        pokemonImageView.sd_setImage(with: pokemon.profilePicURL)
     }
 }

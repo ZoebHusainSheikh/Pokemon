@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PokemonDetailsViewController: UIViewController
 {
@@ -285,10 +286,7 @@ private extension PokemonDetailsViewController {
                 break
             }
         }
-        
-        if let imageURL = pokemon.profilePicURL, let itemNumber = self.pokemon?.pokemonId {
-            //self.pokemonImageView.setImage(url: imageURL, itemNumber: NSNumber(value: itemNumber))
-        }
+        pokemonImageView.sd_setImage(with: pokemon.profilePicURL)
     }
 }
 

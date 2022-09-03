@@ -277,7 +277,7 @@ extension PokemonListViewController: UIScrollViewDelegate {
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-        if distanceFromBottom < height {
+        if distanceFromBottom <= height {
             // Reached to last cell, now we can perform for new pokemons
             fetchNextPokemons()
         }
