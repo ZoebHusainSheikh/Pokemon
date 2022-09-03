@@ -259,11 +259,11 @@ private extension PokemonDetailsViewController {
         self.pokemon = pokemon
         headerView.backgroundColor = pokemon.bgColors?.0
         nameLabel.text = pokemon.name?.capitalized
-        statsLabel.attributedText = NSMutableAttributedString().bold("Stats: ").normal(pokemon.statCSV.capitalized)
-        typesLabel.attributedText = NSMutableAttributedString().bold("Types: ").normal(pokemon.typeCSV.capitalized)
-        weightLabel.attributedText = NSMutableAttributedString().bold("Weight: ").normal("\(pokemon.weight ?? 0)")
-        heightLabel.attributedText = NSMutableAttributedString().bold("Height: ").normal("\(pokemon.height ?? 0)")
-        baseExpLabel.attributedText = NSMutableAttributedString().bold("Base Experience: ").normal("\(pokemon.baseExperience ?? 0)")
+//        statsLabel.attributedText = NSMutableAttributedString().bold("Stats: ").normal(pokemon.statCSV.capitalized)
+//        typesLabel.attributedText = NSMutableAttributedString().bold("Types: ").normal(pokemon.typeCSV.capitalized)
+//        weightLabel.attributedText = NSMutableAttributedString().bold("Weight: ").normal("\(pokemon.weight ?? 0)")
+//        heightLabel.attributedText = NSMutableAttributedString().bold("Height: ").normal("\(pokemon.height ?? 0)")
+//        baseExpLabel.attributedText = NSMutableAttributedString().bold("Base Experience: ").normal("\(pokemon.baseExperience ?? 0)")
         
         let colors = pokemon.colors ?? (UIColor(hex: "#48D0B0"), UIColor(hex: "#5EDFC5"))
         abilityView.backgroundColor = colors.1
@@ -287,7 +287,7 @@ private extension PokemonDetailsViewController {
         }
         
         if let imageURL = pokemon.profilePicURL, let itemNumber = self.pokemon?.pokemonId {
-            self.pokemonImageView.setImage(url: imageURL, itemNumber: NSNumber(value: itemNumber))
+            //self.pokemonImageView.setImage(url: imageURL, itemNumber: NSNumber(value: itemNumber))
         }
     }
 }

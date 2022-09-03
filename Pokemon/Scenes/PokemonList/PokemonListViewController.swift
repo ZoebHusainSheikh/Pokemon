@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PokemonListDisplayLogic: class
+protocol PokemonListDisplayLogic: AnyObject
 {
     func displayPokemons(viewModel: PokemonList.GetPokemons.ViewModel)
     func updatePokemon(viewModel: PokemonDetail.Fetch.ViewModel)
@@ -17,12 +17,15 @@ protocol PokemonListDisplayLogic: class
 
 class PokemonListViewController: UIViewController, PokemonListDisplayLogic
 {
-    var pokemons = [Pokemon]()
-    var pokemonInfo = PokemonInfo()
-    var filteredPokemons = [Pokemon]()
-    fileprivate var selectedSorting: SortPokemon = .none
-    lazy var cellSize = (self.view.frame.width - 30) / 2
-    lazy var searchBar: UISearchBar = {
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    
+    private var pokemons = [Pokemon]()
+    private var pokemonInfo = PokemonInfo()
+    private var filteredPokemons = [Pokemon]()
+    private  var selectedSorting: SortPokemon = .none
+    private lazy var cellSize = (self.view.frame.width - 30) / 2
+    private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = .default
         searchBar.placeholder = " Search..."
@@ -34,11 +37,9 @@ class PokemonListViewController: UIViewController, PokemonListDisplayLogic
     }()
     
     // cell reuse id (cells that scroll out of view can be reused)
-    let cellReuseIdentifier = PokemonListCollectionViewCell.className
-    var collectionView: UICollectionView!
-    var activityIndicator: UIActivityIndicatorView!
-    var interactor: PokemonListBusinessLogic?
-    var router: (NSObjectProtocol & PokemonListRoutingLogic & PokemonListDataPassing)?
+    private let cellReuseIdentifier = PokemonListCollectionViewCell.className
+    private var interactor: PokemonListBusinessLogic?
+    private var router: (NSObjectProtocol & PokemonListRoutingLogic & PokemonListDataPassing)?
     
     // MARK: Object lifecycle
     
@@ -95,9 +96,7 @@ private extension PokemonListViewController {
     func initialiseView() {
         navigationItem.titleView = searchBar
         setupBarButtonItem()
-        self.view.backgroundColor = .white
         setupCollectionView()
-        setupActivityIndicatory()
         fetchPokemons()
     }
     
@@ -111,26 +110,7 @@ private extension PokemonListViewController {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
         layout.itemSize = CGSize(width: cellSize, height: cellSize)
-        
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(PokemonListCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
-        collectionView.backgroundColor = UIColor.clear
-        view.addSubview(collectionView)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-    }
-    
-    func setupActivityIndicatory() {
-        activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = .darkGray
-        activityIndicator.center = self.view.center
-        self.view.addSubview(activityIndicator)
+        collectionView.collectionViewLayout = layout
     }
     
     // MARK: Fetch Pokemons
@@ -178,7 +158,7 @@ private extension PokemonListViewController {
             alertController.addAction(nameAscAction)
             alertController.addAction(nameDescAction)
             alertController.addAction(cancelAction)
-            let alertWindow = UIApplication.shared.windows.first
+            let alertWindow = UIApplication.shared.keyWindow
             alertWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
         }
     }
