@@ -27,7 +27,8 @@ class PokemonListRouter: NSObject, PokemonListRoutingLogic, PokemonListDataPassi
     
     func routeToPokemonDetails()
     {
-        let destinationVC = PokemonDetailsViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC: PokemonDetailsViewController = storyboard.instantiateViewController(withIdentifier: PokemonDetailsViewController.className) as! PokemonDetailsViewController
         var destinationDS = destinationVC.router!.dataStore!
         passDataToPokemonDetails(source: dataStore!, destination: &destinationDS)
         navigateToPokemonDetails(source: viewController!, destination: destinationVC)
