@@ -67,6 +67,10 @@ extension UIViewController {
 
 extension String {
     
+    static var empty: String {
+        return ""
+    }
+    
     var trim: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }

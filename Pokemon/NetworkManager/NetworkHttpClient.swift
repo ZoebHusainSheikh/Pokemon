@@ -18,7 +18,7 @@ protocol APIClientProtocol: AnyObject {
 
 class NetworkHttpClient: NSObject {
     private static let getMethod: String = "GET"
-    static let sharedInstance = NetworkHttpClient()
+    static let shared = NetworkHttpClient()
 }
 
 extension NetworkHttpClient: APIClientProtocol {
