@@ -20,7 +20,7 @@ class PokemonListViewController: UIViewController, PokemonListDisplayLogic
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    private var pokemons = [Pokemon]()
+    var pokemons = [Pokemon]()
     private var pokemonInfo = PokemonInfo()
     private var filteredPokemons = [Pokemon]()
     private  var selectedSorting: SortPokemon = .none
@@ -38,7 +38,7 @@ class PokemonListViewController: UIViewController, PokemonListDisplayLogic
     
     // cell reuse id (cells that scroll out of view can be reused)
     private let cellReuseIdentifier = PokemonListCollectionViewCell.className
-    private var interactor: PokemonListBusinessLogic?
+    var interactor: PokemonListBusinessLogic?
     private var router: (NSObjectProtocol & PokemonListRoutingLogic & PokemonListDataPassing)?
     
     // MARK: Object lifecycle
