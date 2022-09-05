@@ -9,7 +9,7 @@ import UIKit
 
 protocol PokemonDetailsBusinessLogic
 {
-    var pokemon: Pokemon? { get set }
+    func fetchPokemonDetails()
 }
 
 protocol PokemonDetailsDataStore
@@ -20,4 +20,10 @@ protocol PokemonDetailsDataStore
 class PokemonDetailsInteractor: PokemonDetailsBusinessLogic, PokemonDetailsDataStore
 {
     var pokemon: Pokemon?
+    
+    var presenter: PokemonDetailsPresentationLogic?
+    
+    func fetchPokemonDetails() {
+        self.presenter?.presentPokemonDetails(pokemon: pokemon)
+    }
 }

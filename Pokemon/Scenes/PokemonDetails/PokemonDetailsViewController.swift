@@ -8,7 +8,12 @@
 import UIKit
 import SDWebImage
 
-class PokemonDetailsViewController: UIViewController
+protocol PokemonDetailsDisplayLogic: AnyObject
+{
+    func displayPokemonDetails(pokemon: Pokemon?)
+}
+
+class PokemonDetailsViewController: UIViewController, PokemonDetailsDisplayLogic
 {
     @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var detailsView: UIView!
@@ -26,7 +31,7 @@ class PokemonDetailsViewController: UIViewController
     @IBOutlet private weak var abilityView2: UIView!
     @IBOutlet private weak var abilityView3: UIView!
     
-    private var pokemon: Pokemon?
+    var pokemon: Pokemon?
     var interactor: PokemonDetailsBusinessLogic?
     var router: (NSObjectProtocol & PokemonDetailsDataPassing)?
     
@@ -50,9 +55,12 @@ class PokemonDetailsViewController: UIViewController
     {
         let viewController = self
         let interactor = PokemonDetailsInteractor()
+        let presenter = PokemonDetailsPresenter()
         let router = PokemonDetailsRouter()
         viewController.interactor = interactor
         viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
     }
@@ -70,7 +78,7 @@ private extension PokemonDetailsViewController {
     
     func initialiseView() {
         self.view.backgroundColor = .white
-        displayPokemonDetails()
+        interactor?.fetchPokemonDetails()
     }
     
     // MARK: - Update UI
@@ -112,9 +120,9 @@ extension PokemonDetailsViewController {
     
     // MARK: PokemonDetails Display Logic
     
-    func displayPokemonDetails()
+    func displayPokemonDetails(pokemon: Pokemon?)
     {
-        if let pokemon = interactor?.pokemon {
+        if let pokemon = pokemon {
             update(pokemon)
         }
     }
