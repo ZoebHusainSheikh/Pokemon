@@ -18,18 +18,18 @@ class PokemonDetailsViewController: UIViewController, PokemonDetailsDisplayLogic
     @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var detailsView: UIView!
     @IBOutlet private weak var pokemonImageView: UIImageView!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var statsLabel: UILabel!
-    @IBOutlet private weak var typesLabel: UILabel!
-    @IBOutlet private weak var weightLabel: UILabel!
-    @IBOutlet private weak var heightLabel: UILabel!
-    @IBOutlet private weak var baseExpLabel: UILabel!
-    @IBOutlet private weak var abilityLabel: UILabel!
-    @IBOutlet private weak var abilityLabel2: UILabel!
-    @IBOutlet private weak var abilityLabel3: UILabel!
-    @IBOutlet private weak var abilityView: UIView!
-    @IBOutlet private weak var abilityView2: UIView!
-    @IBOutlet private weak var abilityView3: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var statsLabel: UILabel!
+    @IBOutlet weak var typesLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var baseExpLabel: UILabel!
+    @IBOutlet weak var abilityLabel: UILabel!
+    @IBOutlet weak var abilityLabel2: UILabel!
+    @IBOutlet weak var abilityLabel3: UILabel!
+    @IBOutlet weak var abilityView: UIView!
+    @IBOutlet weak var abilityView2: UIView!
+    @IBOutlet weak var abilityView3: UIView!
     
     var pokemon: Pokemon?
     var interactor: PokemonDetailsBusinessLogic?

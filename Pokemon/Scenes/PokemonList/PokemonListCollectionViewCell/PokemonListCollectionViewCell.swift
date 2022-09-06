@@ -11,13 +11,13 @@ import SDWebImage
 class PokemonListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var pokemonImageView: UIImageView!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var abilityLabel: UILabel!
-    @IBOutlet private weak var abilityView: UIView!
-    @IBOutlet private weak var abilityLabel2: UILabel!
-    @IBOutlet private weak var abilityView2: UIView!
-    @IBOutlet private weak var abilityLabel3: UILabel!
-    @IBOutlet private weak var abilityView3: UIView!
+    @IBOutlet weak var abilityView: UIView!
+    @IBOutlet weak var abilityView2: UIView!
+    @IBOutlet weak var abilityView3: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var abilityLabel: UILabel!
+    @IBOutlet weak var abilityLabel2: UILabel!
+    @IBOutlet weak var abilityLabel3: UILabel!
     
     private var pokemon: Pokemon?
     private var colors: (UIColor, UIColor)!

@@ -17,13 +17,13 @@ protocol PokemonListDisplayLogic: AnyObject
 
 class PokemonListViewController: UIViewController, PokemonListDisplayLogic
 {
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var pokemons = [Pokemon]()
     private var pokemonInfo = PokemonInfo()
     private var filteredPokemons = [Pokemon]()
-    private  var selectedSorting: SortPokemon = .none
+    private var selectedSorting: SortPokemon = .none
     private lazy var cellSize = (self.view.frame.width - 30) / 2
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
