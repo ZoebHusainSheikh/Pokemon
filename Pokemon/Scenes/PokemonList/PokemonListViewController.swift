@@ -20,12 +20,17 @@ final class PokemonListViewController: UIViewController, PokemonListDisplayLogic
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var pokemons = [Pokemon]()
-    private var pokemonInfo = PokemonInfo()
-    private var filteredPokemons = [Pokemon]()
-    private var selectedSorting: SortPokemon = .none
+    enum SortPokemon {
+        case none
+        case nameAsc
+        case nameDesc
+    }
     private lazy var cellSize = (self.view.frame.width - 30) / 2
-    private lazy var searchBar: UISearchBar = {
+    private var pokemonInfo = PokemonInfo()
+    var pokemons = [Pokemon]()
+    var filteredPokemons = [Pokemon]()
+    var selectedSorting: SortPokemon = .none
+    lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = .default
         searchBar.placeholder = " Search..."
@@ -36,10 +41,11 @@ final class PokemonListViewController: UIViewController, PokemonListDisplayLogic
         return searchBar
     }()
     
-    // cell reuse id (cells that scroll out of view can be reused)
-    private let cellReuseIdentifier = PokemonListCollectionViewCell.className
     var interactor: PokemonListBusinessLogic?
     private var router: (NSObjectProtocol & PokemonListRoutingLogic & PokemonListDataPassing)?
+    
+    // cell reuse id (cells that scroll out of view can be reused)
+    private let cellReuseIdentifier = PokemonListCollectionViewCell.className
     
     // MARK: Object lifecycle
     
@@ -80,17 +86,21 @@ final class PokemonListViewController: UIViewController, PokemonListDisplayLogic
     }
 }
 
+extension PokemonListViewController {
+    func fetchNextPokemons() {
+        guard let nextPokemonsURL = pokemonInfo.next else {
+            return
+        }
+        
+        fetchPokemons(url: nextPokemonsURL)
+    }
+}
+
 private extension PokemonListViewController {
     enum Constants {
         static let imageName: String = "PokemonBG"
         static let rowHeight: CGFloat = 65
         static let pokemonBaseURL = "https://pokeapi.co/api/v2/pokemon/"
-    }
-    
-    enum SortPokemon {
-        case none
-        case nameAsc
-        case nameDesc
     }
     
     func initialiseView() {
@@ -129,14 +139,6 @@ private extension PokemonListViewController {
             let request = PokemonDetail.Fetch.Request(url: url)
             interactor?.fetchPokemon(request: request)
         }
-    }
-    
-    func fetchNextPokemons() {
-        guard let nextPokemonsURL = pokemonInfo.next else {
-            return
-        }
-        
-        fetchPokemons(url: nextPokemonsURL)
     }
     
     @objc func sortButtonTapped() {
