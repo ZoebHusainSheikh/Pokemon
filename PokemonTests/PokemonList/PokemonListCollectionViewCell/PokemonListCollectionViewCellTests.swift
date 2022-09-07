@@ -9,26 +9,11 @@
 import XCTest
 import Foundation
 
-class PokemonListCollectionViewCellTests: XCTestCase {
+final class PokemonListCollectionViewCellTests: XCTestCase {
     // MARK: Subject under test
     
     var sut: PokemonListViewController!
     var window: UIWindow!
-    var mockPokemon: Pokemon {
-        let pokemon = Pokemon()
-        pokemon.pokemonId = 1
-        pokemon.name = "Test1"
-        pokemon.bgColors = (UIColor(hex: "#48D0B0"), UIColor(hex: "#5EDFC5"))
-        var abilities = [AbilityInfo]()
-        let abilityInfo = AbilityInfo()
-        let ability = Ability()
-        ability.name = "Strong"
-        abilityInfo.ability = ability
-        abilities.append(abilityInfo)
-        pokemon.abilities = abilities
-        
-        return pokemon
-    }
     
     // MARK: Test lifecycle
     
@@ -78,7 +63,7 @@ class PokemonListCollectionViewCellTests: XCTestCase {
         XCTAssertEqual(cell.nameLabel.text, "Test1", "update(_ pokemon:) should set the pokemon name in nameLabel's text")
     }
     
-    func testCollectionViewCellAbilityView() {
+    func testCollectionViewCellShowAbilityView() {
         // Given
         let pokemon = mockPokemon
         
@@ -171,5 +156,23 @@ class PokemonListCollectionViewCellTests: XCTestCase {
         // Then
         
         XCTAssertEqual(cell.abilityView.backgroundColor, UIColor(hex: "#5EDFC5"), "update(_ pokemon:) should set background color to '#5EDFC5'")
+    }
+}
+
+extension PokemonListCollectionViewCellTests {
+    var mockPokemon: Pokemon {
+        let pokemon = Pokemon()
+        pokemon.pokemonId = 1
+        pokemon.name = "Test1"
+        pokemon.bgColors = (UIColor(hex: "#48D0B0"), UIColor(hex: "#5EDFC5"))
+        var abilities = [AbilityInfo]()
+        let abilityInfo = AbilityInfo()
+        let ability = Ability()
+        ability.name = "Strong"
+        abilityInfo.ability = ability
+        abilities.append(abilityInfo)
+        pokemon.abilities = abilities
+        
+        return pokemon
     }
 }

@@ -54,7 +54,7 @@ enum PokemonDetail
     }
 }
 
-class Pokemon: NSObject, Codable {
+final class Pokemon: NSObject, Codable {
     var pokemonId: Int?
     var name: String?
     var url: String?
@@ -166,7 +166,7 @@ extension Pokemon {
     }
 }
 
-class PokemonInfo: NSObject, Codable {
+final class PokemonInfo: NSObject, Codable {
     var count: Int?
     var next: String?
     var previous: String?
@@ -182,7 +182,7 @@ extension PokemonInfo {
     }
 }
 
-class AbilityInfo: NSObject, Codable {
+final class AbilityInfo: NSObject, Codable {
     var ability: Ability?
 }
 
@@ -192,7 +192,7 @@ extension AbilityInfo {
     }
 }
 
-class Ability: NSObject, Codable {
+final class Ability: NSObject, Codable {
     var name: String?
     var url: String?
 }
@@ -204,8 +204,8 @@ extension Ability {
     }
 }
 
-class TypeInfo: NSObject, Codable {
-    var type: Type?
+final class TypeInfo: NSObject, Codable {
+    var type: TypeData?
 }
 
 extension TypeInfo {
@@ -214,19 +214,19 @@ extension TypeInfo {
     }
 }
 
-class Type: NSObject, Codable {
+final class TypeData: NSObject, Codable {
     var name: String?
     var url: String?
 }
 
-extension Type {
+extension TypeData {
     enum CodingKeys: String, CodingKey {
         case name = "name"
         case url = "url"
     }
 }
 
-class StatInfo: NSObject, Codable {
+final class StatInfo: NSObject, Codable {
     var stat: Stat?
 }
 
@@ -236,7 +236,7 @@ extension StatInfo {
     }
 }
 
-class Stat: NSObject, Codable {
+final class Stat: NSObject, Codable {
     var name: String?
     var url: String?
 }
@@ -248,7 +248,7 @@ extension Stat {
     }
 }
 
-class SpritesInfo: NSObject, Codable {
+final class SpritesInfo: NSObject, Codable {
     var other: OtherInfo?
     var frontDefault: String?
 }
@@ -260,7 +260,7 @@ extension SpritesInfo {
     }
 }
 
-class OtherInfo: NSObject, Codable {
+final class OtherInfo: NSObject, Codable {
     var officialArtwork: OfficialArtwork?
 }
 
@@ -270,7 +270,7 @@ extension OtherInfo {
     }
 }
 
-class OfficialArtwork: NSObject, Codable {
+final class OfficialArtwork: NSObject, Codable {
     var frontDefault: String?
 }
 

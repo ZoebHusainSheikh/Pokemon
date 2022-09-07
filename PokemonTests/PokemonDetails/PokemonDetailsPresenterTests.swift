@@ -8,7 +8,7 @@
 @testable import Pokemon
 import XCTest
 
-class PokemonDetailsPresenterTests: XCTestCase
+final class PokemonDetailsPresenterTests: XCTestCase
 {
     var mockPokemon: Pokemon {
         let pokemon = Pokemon()
@@ -17,7 +17,7 @@ class PokemonDetailsPresenterTests: XCTestCase
         return pokemon
     }
     
-    class MockPokemonDetailsPresenter: PokemonDetailsPresenter {
+    final class MockPokemonDetailsPresenter: PokemonDetailsPresenter {
         var mockPokemon: Pokemon {
             let pokemon = Pokemon()
             pokemon.pokemonId = 1
@@ -55,7 +55,7 @@ class PokemonDetailsPresenterTests: XCTestCase
     
     // MARK: Test doubles
     
-    class PokemonDetailsDisplayLogicSpy: PokemonDetailsDisplayLogic
+    final class PokemonDetailsDisplayLogicSpy: PokemonDetailsDisplayLogic
     {
         var displayPokemonsCalled = false
         

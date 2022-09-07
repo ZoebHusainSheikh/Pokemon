@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class PokemonListCollectionViewCell: UICollectionViewCell {
+final class PokemonListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var pokemonImageView: UIImageView!
     @IBOutlet weak var abilityView: UIView!

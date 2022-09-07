@@ -8,9 +8,9 @@
 @testable import Pokemon
 import XCTest
 
-class PokemonListInteractorTests: XCTestCase
+final class PokemonListInteractorTests: XCTestCase
 {
-    class MockPokemonListInteractor: PokemonListInteractor {
+    final class MockPokemonListInteractor: PokemonListInteractor {
         override func fetchPokemons(request: PokemonList.GetPokemons.Request) {
             let response = PokemonList.GetPokemons.Response(data: nil)
             self.presenter?.presentPokemons(response: response)
@@ -48,7 +48,7 @@ class PokemonListInteractorTests: XCTestCase
     
     // MARK: Test doubles
     
-    class PokemonListPresentationLogicSpy: PokemonListPresentationLogic
+    final class PokemonListPresentationLogicSpy: PokemonListPresentationLogic
     {
         var presentPokemonsCalled = false
         var pokemonDetailCalled = false

@@ -13,10 +13,8 @@ protocol PokemonDetailsDisplayLogic: AnyObject
     func displayPokemonDetails(pokemon: Pokemon?)
 }
 
-class PokemonDetailsViewController: UIViewController, PokemonDetailsDisplayLogic
-{
-    @IBOutlet private weak var headerView: UIView!
-    @IBOutlet private weak var detailsView: UIView!
+final class PokemonDetailsViewController: UIViewController, PokemonDetailsDisplayLogic {
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet private weak var pokemonImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statsLabel: UILabel!

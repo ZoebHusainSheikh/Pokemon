@@ -8,7 +8,7 @@
 @testable import Pokemon
 import XCTest
 
-class PokemonListViewControllerTests: XCTestCase
+final class PokemonListViewControllerTests: XCTestCase
 {
     // MARK: Subject under test
     
@@ -62,7 +62,7 @@ class PokemonListViewControllerTests: XCTestCase
     
     // MARK: Test PokemonListBusinessLogicSpy
     
-    class PokemonListBusinessLogicSpy: PokemonListBusinessLogic
+    final class PokemonListBusinessLogicSpy: PokemonListBusinessLogic
     {
         var fetchPokemonsCalled = false
         var fetchPokemonDetailCalled = false

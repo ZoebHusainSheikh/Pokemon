@@ -8,9 +8,9 @@
 @testable import Pokemon
 import XCTest
 
-class PokemonListPresenterTests: XCTestCase
+final class PokemonListPresenterTests: XCTestCase
 {
-    class MockPokemonListPresenter: PokemonListPresenter {
+    final class MockPokemonListPresenter: PokemonListPresenter {
         override func presentPokemons(response: PokemonList.GetPokemons.Response) {
             self.viewController?.displayPokemons(viewModel: PokemonList.GetPokemons.ViewModel())
             self.viewController?.stopAnimation()
@@ -46,7 +46,7 @@ class PokemonListPresenterTests: XCTestCase
     
     // MARK: Test doubles
     
-    class PokemonListDisplayLogicSpy: PokemonListDisplayLogic
+    final class PokemonListDisplayLogicSpy: PokemonListDisplayLogic
     {
         var displayPokemonsCalled = false
         var updatePokemonsCalled = false

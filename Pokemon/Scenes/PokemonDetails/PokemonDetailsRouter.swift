@@ -12,7 +12,7 @@ protocol PokemonDetailsDataPassing
   var dataStore: PokemonDetailsDataStore? { get }
 }
 
-class PokemonDetailsRouter: NSObject, PokemonDetailsDataPassing
+final class PokemonDetailsRouter: NSObject, PokemonDetailsDataPassing
 {
   weak var viewController: PokemonDetailsViewController?
   var dataStore: PokemonDetailsDataStore?

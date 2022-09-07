@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokemonListWorker
+final class PokemonListWorker
 {
     func fetchPokemons(request: PokemonList.GetPokemons.Request?, _ onCompletion: @escaping CompletionHandler) {
         

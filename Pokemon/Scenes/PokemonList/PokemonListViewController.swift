@@ -15,7 +15,7 @@ protocol PokemonListDisplayLogic: AnyObject
     func stopAnimation()
 }
 
-class PokemonListViewController: UIViewController, PokemonListDisplayLogic
+final class PokemonListViewController: UIViewController, PokemonListDisplayLogic
 {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

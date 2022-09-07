@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertViewController {
+final class AlertViewController {
     
     static let sharedInstance = AlertViewController()
     static let kSomethingWentWrongMessage = "Something went wrong"

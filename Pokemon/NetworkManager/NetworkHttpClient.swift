@@ -16,7 +16,7 @@ protocol APIClientProtocol: AnyObject {
     func performAPICall(_ strURL : String?, parameters : Dictionary<String, Any>?, success:@escaping successBlock, failure:@escaping failureBlock)
 }
 
-class NetworkHttpClient: NSObject {
+final class NetworkHttpClient: NSObject {
     private static let getMethod: String = "GET"
     static let shared = NetworkHttpClient()
 }
