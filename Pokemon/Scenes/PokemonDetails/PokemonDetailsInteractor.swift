@@ -7,18 +7,15 @@
 
 import UIKit
 
-protocol PokemonDetailsBusinessLogic
-{
+protocol PokemonDetailsBusinessLogic {
     func fetchPokemonDetails()
 }
 
-protocol PokemonDetailsDataStore
-{
+protocol PokemonDetailsDataStore {
     var pokemon: Pokemon? { get set }
 }
 
-class PokemonDetailsInteractor: PokemonDetailsBusinessLogic, PokemonDetailsDataStore
-{
+class PokemonDetailsInteractor: PokemonDetailsBusinessLogic, PokemonDetailsDataStore {
     var pokemon: Pokemon?
     
     var presenter: PokemonDetailsPresentationLogic?

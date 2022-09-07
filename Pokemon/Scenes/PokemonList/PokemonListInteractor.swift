@@ -8,20 +8,17 @@
 
 import UIKit
 
-protocol PokemonListBusinessLogic
-{
+protocol PokemonListBusinessLogic {
     func fetchPokemons(request: PokemonList.GetPokemons.Request)
     func fetchPokemon(request: PokemonDetail.Fetch.Request)
     var pokemon: Pokemon? { get set }
 }
 
-protocol PokemonListDataStore
-{
+protocol PokemonListDataStore {
     var pokemon: Pokemon? { get set }
 }
 
-class PokemonListInteractor: PokemonListBusinessLogic, PokemonListDataStore
-{
+class PokemonListInteractor: PokemonListBusinessLogic, PokemonListDataStore {
     var pokemon: Pokemon?
     
     var presenter: PokemonListPresentationLogic?
@@ -29,8 +26,7 @@ class PokemonListInteractor: PokemonListBusinessLogic, PokemonListDataStore
     
     // MARK: Fetch Pokemons from API
     
-    func fetchPokemons(request: PokemonList.GetPokemons.Request)
-    {
+    func fetchPokemons(request: PokemonList.GetPokemons.Request) {
         worker.fetchPokemons(request: request, { (status, apiResponse) in
             
             let response = PokemonList.GetPokemons.Response(data: apiResponse as? Data)

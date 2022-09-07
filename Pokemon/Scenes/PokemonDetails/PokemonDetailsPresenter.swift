@@ -7,13 +7,11 @@
 
 import Foundation
 
-protocol PokemonDetailsPresentationLogic
-{
+protocol PokemonDetailsPresentationLogic {
     func presentPokemonDetails(pokemon: Pokemon?)
 }
 
-class PokemonDetailsPresenter: PokemonDetailsPresentationLogic
-{
+class PokemonDetailsPresenter: PokemonDetailsPresentationLogic {
     weak var viewController: PokemonDetailsDisplayLogic?
     
     // MARK: Mapping

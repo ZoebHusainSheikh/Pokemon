@@ -8,8 +8,7 @@
 @testable import Pokemon
 import XCTest
 
-final class PokemonDetailsViewControllerTests: XCTestCase
-{
+final class PokemonDetailsViewControllerTests: XCTestCase {
     // MARK: Subject under test
     
     var sut: PokemonDetailsViewController!
@@ -17,38 +16,33 @@ final class PokemonDetailsViewControllerTests: XCTestCase
     
     // MARK: Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         window = UIWindow()
         setupPokemonDetailsViewController()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         window = nil
         super.tearDown()
     }
     
     // MARK: Test setup
     
-    func setupPokemonDetailsViewController()
-    {
+    func setupPokemonDetailsViewController() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of: self)))
         sut = storyboard.instantiateViewController(withIdentifier: PokemonDetailsViewController.className) as? PokemonDetailsViewController
     
     }
     
-    func loadView()
-    {
+    func loadView() {
         window.addSubview(sut.view)
         RunLoop.current.run(until: Date())
     }
     
     // MARK: Test PokemonDetailsBusinessLogicSpy
     
-    final class PokemonDetailsBusinessLogicSpy: PokemonDetailsBusinessLogic
-    {
+    final class PokemonDetailsBusinessLogicSpy: PokemonDetailsBusinessLogic {
         var fetchPokemonDetailCalled = false
         func fetchPokemonDetails() {
             fetchPokemonDetailCalled = true
@@ -57,8 +51,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase
     
     // MARK: Tests
     
-    func testShouldFetchPokemonWhenViewIsLoaded()
-    {
+    func testShouldFetchPokemonWhenViewIsLoaded() {
         // Given
         let spy = PokemonDetailsBusinessLogicSpy()
         sut.interactor = spy
@@ -68,8 +61,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase
         XCTAssertTrue(spy.fetchPokemonDetailCalled, "viewDidLoad() should ask the interactor to fetch pokemon")
     }
     
-    func testDisplayPokemon()
-    {
+    func testDisplayPokemon() {
         // Given
         let spy = PokemonDetailsBusinessLogicSpy()
         sut.interactor = spy
@@ -80,8 +72,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase
         XCTAssertNotNil(sut.pokemon, "displayPokemonDetails(pokemon:) should initialise the optional pokemon with value")
     }
     
-    func testDisplayPokemonName()
-    {
+    func testDisplayPokemonName() {
         // Given
         let spy = PokemonDetailsBusinessLogicSpy()
         sut.interactor = spy

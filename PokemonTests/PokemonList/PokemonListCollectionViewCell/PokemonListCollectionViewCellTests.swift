@@ -17,30 +17,26 @@ final class PokemonListCollectionViewCellTests: XCTestCase {
     
     // MARK: Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         window = UIWindow()
         setupPokemonListViewController()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         window = nil
         super.tearDown()
     }
     
     // MARK: Test setup
     
-    func setupPokemonListViewController()
-    {
+    func setupPokemonListViewController() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of: self)))
         sut = storyboard.instantiateViewController(withIdentifier: PokemonListViewController.className) as? PokemonListViewController
         
     }
     
-    func loadView()
-    {
+    func loadView() {
         window.addSubview(sut.view)
         RunLoop.current.run(until: Date())
     }

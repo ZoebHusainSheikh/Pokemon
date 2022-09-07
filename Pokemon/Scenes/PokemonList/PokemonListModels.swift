@@ -8,46 +8,36 @@
 
 import UIKit
 
-enum PokemonList
-{
+enum PokemonList {
     // MARK: Use cases
     
-    enum GetPokemons
-    {
-        struct Request
-        {
+    enum GetPokemons {
+        struct Request {
             let url: String
             var params : Dictionary<String, Any>?
         }
-        struct Response
-        {
+        struct Response {
             let data: Data?
         }
-        struct ViewModel
-        {
+        struct ViewModel {
             var pokemonInfo: PokemonInfo?
         }
     }
 }
 
-enum PokemonDetail
-{
+enum PokemonDetail {
     // MARK: Use cases
     
-    enum Fetch
-    {
-        struct Request
-        {
+    enum Fetch {
+        struct Request {
             var url: String
             var params : Dictionary<String, Any>?
         }
-        struct Response
-        {
+        struct Response {
             let data: Data?
             var pokemonURL: String?
         }
-        struct ViewModel
-        {
+        struct ViewModel {
             var pokemon: Pokemon?
             var pokemonURL: String?
         }

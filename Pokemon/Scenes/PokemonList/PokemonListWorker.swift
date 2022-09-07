@@ -8,8 +8,7 @@
 
 import UIKit
 
-final class PokemonListWorker
-{
+final class PokemonListWorker {
     func fetchPokemons(request: PokemonList.GetPokemons.Request?, _ onCompletion: @escaping CompletionHandler) {
         
         NetworkHttpClient.shared.performAPICall(request?.url, parameters: request?.params, success: { (dataResponse) in

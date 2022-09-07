@@ -7,13 +7,11 @@
 
 import UIKit
 
-protocol PokemonDetailsDataPassing
-{
+protocol PokemonDetailsDataPassing {
   var dataStore: PokemonDetailsDataStore? { get }
 }
 
-final class PokemonDetailsRouter: NSObject, PokemonDetailsDataPassing
-{
+final class PokemonDetailsRouter: NSObject, PokemonDetailsDataPassing {
   weak var viewController: PokemonDetailsViewController?
   var dataStore: PokemonDetailsDataStore?
 }

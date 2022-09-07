@@ -8,8 +8,7 @@
 import UIKit
 import SDWebImage
 
-protocol PokemonDetailsDisplayLogic: AnyObject
-{
+protocol PokemonDetailsDisplayLogic: AnyObject {
     func displayPokemonDetails(pokemon: Pokemon?)
 }
 
@@ -35,22 +34,19 @@ final class PokemonDetailsViewController: UIViewController, PokemonDetailsDispla
     
     // MARK: Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
     // MARK: Setup
     
-    private func setup()
-    {
+    private func setup() {
         let viewController = self
         let interactor = PokemonDetailsInteractor()
         let presenter = PokemonDetailsPresenter()
@@ -65,8 +61,7 @@ final class PokemonDetailsViewController: UIViewController, PokemonDetailsDispla
     
     // MARK: View lifecycle
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         initialiseView()
     }
@@ -118,8 +113,7 @@ extension PokemonDetailsViewController {
     
     // MARK: PokemonDetails Display Logic
     
-    func displayPokemonDetails(pokemon: Pokemon?)
-    {
+    func displayPokemonDetails(pokemon: Pokemon?) {
         if let pokemon = pokemon {
             update(pokemon)
         }

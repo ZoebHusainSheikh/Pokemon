@@ -8,8 +8,7 @@
 @testable import Pokemon
 import XCTest
 
-final class PokemonListInteractorTests: XCTestCase
-{
+final class PokemonListInteractorTests: XCTestCase {
     final class MockPokemonListInteractor: PokemonListInteractor {
         override func fetchPokemons(request: PokemonList.GetPokemons.Request) {
             let response = PokemonList.GetPokemons.Response(data: nil)
@@ -28,28 +27,24 @@ final class PokemonListInteractorTests: XCTestCase
     
     // MARK: Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         setupPokemonListInteractor()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
     // MARK: Test setup
     
-    func setupPokemonListInteractor()
-    {
+    func setupPokemonListInteractor() {
         sut = MockPokemonListInteractor()
     }
     
     // MARK: Test doubles
     
-    final class PokemonListPresentationLogicSpy: PokemonListPresentationLogic
-    {
+    final class PokemonListPresentationLogicSpy: PokemonListPresentationLogic {
         var presentPokemonsCalled = false
         var pokemonDetailCalled = false
         
@@ -64,8 +59,7 @@ final class PokemonListInteractorTests: XCTestCase
     
     // MARK: Tests
     
-    func testFetchPokemon()
-    {
+    func testFetchPokemon() {
         // Given
         let spy = PokemonListPresentationLogicSpy()
         sut.presenter = spy
@@ -78,8 +72,7 @@ final class PokemonListInteractorTests: XCTestCase
         XCTAssertTrue(spy.presentPokemonsCalled, "fetchPokemons(request:) should ask the presenter to format the result")
     }
     
-    func testPokemonDetail()
-    {
+    func testPokemonDetail() {
         // Given
         let spy = PokemonListPresentationLogicSpy()
         sut.presenter = spy

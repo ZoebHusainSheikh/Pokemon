@@ -8,8 +8,7 @@
 @testable import Pokemon
 import XCTest
 
-final class PokemonListPresenterTests: XCTestCase
-{
+final class PokemonListPresenterTests: XCTestCase {
     final class MockPokemonListPresenter: PokemonListPresenter {
         override func presentPokemons(response: PokemonList.GetPokemons.Response) {
             self.viewController?.displayPokemons(viewModel: PokemonList.GetPokemons.ViewModel())
@@ -26,28 +25,24 @@ final class PokemonListPresenterTests: XCTestCase
     
     // MARK: Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         setupPokemonListPresenter()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
     // MARK: Test setup
     
-    func setupPokemonListPresenter()
-    {
+    func setupPokemonListPresenter() {
         sut = MockPokemonListPresenter()
     }
     
     // MARK: Test doubles
     
-    final class PokemonListDisplayLogicSpy: PokemonListDisplayLogic
-    {
+    final class PokemonListDisplayLogicSpy: PokemonListDisplayLogic {
         var displayPokemonsCalled = false
         var updatePokemonsCalled = false
         func displayPokemons(viewModel: PokemonList.GetPokemons.ViewModel) {
@@ -66,8 +61,7 @@ final class PokemonListPresenterTests: XCTestCase
     
     // MARK: Tests
     
-    func testPresentPokemons()
-    {
+    func testPresentPokemons() {
         // Given
         let spy = PokemonListDisplayLogicSpy()
         sut.viewController = spy
@@ -80,8 +74,7 @@ final class PokemonListPresenterTests: XCTestCase
         XCTAssertTrue(spy.displayPokemonsCalled, "presentPokemons(response:) should ask the view controller to display the result")
     }
     
-    func testUpdatePokemon()
-    {
+    func testUpdatePokemon() {
         // Given
         let spy = PokemonListDisplayLogicSpy()
         sut.viewController = spy
@@ -94,8 +87,7 @@ final class PokemonListPresenterTests: XCTestCase
         XCTAssertTrue(spy.updatePokemonsCalled, "pokemonDetail(response:) should ask the view controller to display the result")
     }
     
-    func testStopAnimations()
-    {
+    func testStopAnimations() {
         // Given
         let spy = PokemonListDisplayLogicSpy()
         sut.viewController = spy

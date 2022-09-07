@@ -8,8 +8,7 @@
 @testable import Pokemon
 import XCTest
 
-final class PokemonListViewControllerTests: XCTestCase
-{
+final class PokemonListViewControllerTests: XCTestCase {
     // MARK: Subject under test
     
     var sut: PokemonListViewController!
@@ -64,8 +63,7 @@ final class PokemonListViewControllerTests: XCTestCase
     
     // MARK: Test PokemonListBusinessLogicSpy
     
-    final class PokemonListBusinessLogicSpy: PokemonListBusinessLogic
-    {
+    final class PokemonListBusinessLogicSpy: PokemonListBusinessLogic {
         var fetchPokemonsCalled = false
         var fetchPokemonDetailCalled = false
         
@@ -138,7 +136,6 @@ final class PokemonListViewControllerTests: XCTestCase
         //set searchbar text
         sut.searchBar.text = "Test2"
         sut.displayPokemons(viewModel: viewModel)
-        
         
         // Then
         XCTAssertEqual(sut.filteredPokemons.first?.name, "Test2", "displayPokemons(viewModel:) should update the pokemons count with 1 pokemon")

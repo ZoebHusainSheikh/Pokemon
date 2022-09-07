@@ -28,7 +28,6 @@ final class PokemonListCollectionViewCell: UICollectionViewCell {
         pokemonImageView.cornerRadius = pokemonImageView.frame.width / 2
         self.contentView.layoutIfNeeded()
     }
-    
 }
 
 extension PokemonListCollectionViewCell {

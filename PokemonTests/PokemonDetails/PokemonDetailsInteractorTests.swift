@@ -8,8 +8,7 @@
 @testable import Pokemon
 import XCTest
 
-final class PokemonDetailsInteractorTests: XCTestCase
-{
+final class PokemonDetailsInteractorTests: XCTestCase {
     final class MockPokemonDetailsInteractor: PokemonDetailsInteractor {
         var mockPokemon: Pokemon {
             let pokemon = Pokemon()
@@ -29,28 +28,24 @@ final class PokemonDetailsInteractorTests: XCTestCase
     
     // MARK: Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         setupPokemonDetailsInteractor()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
     // MARK: Test setup
     
-    func setupPokemonDetailsInteractor()
-    {
+    func setupPokemonDetailsInteractor() {
         sut = MockPokemonDetailsInteractor()
     }
     
     // MARK: Test doubles
     
-    final class PokemonDetailsPresentationLogicSpy: PokemonDetailsPresentationLogic
-    {
+    final class PokemonDetailsPresentationLogicSpy: PokemonDetailsPresentationLogic {
         var presentPokemonsCalled = false
         
         func presentPokemonDetails(pokemon: Pokemon?) {
@@ -60,8 +55,7 @@ final class PokemonDetailsInteractorTests: XCTestCase
     
     // MARK: Tests
     
-    func testFetchPokemonDetails()
-    {
+    func testFetchPokemonDetails() {
         // Given
         let spy = PokemonDetailsPresentationLogicSpy()
         sut.presenter = spy

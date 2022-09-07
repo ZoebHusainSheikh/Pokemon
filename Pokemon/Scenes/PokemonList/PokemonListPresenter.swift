@@ -8,20 +8,17 @@
 
 import UIKit
 
-protocol PokemonListPresentationLogic
-{
+protocol PokemonListPresentationLogic {
     func presentPokemons(response: PokemonList.GetPokemons.Response)
     func pokemonDetail(response: PokemonDetail.Fetch.Response)
 }
 
-class PokemonListPresenter: PokemonListPresentationLogic
-{
+class PokemonListPresenter: PokemonListPresentationLogic {
     weak var viewController: PokemonListDisplayLogic?
     
     // MARK: Mapping
     
-    func presentPokemons(response: PokemonList.GetPokemons.Response)
-    {
+    func presentPokemons(response: PokemonList.GetPokemons.Response) {
         if let dataResponse = response.data {
             do {
                 //here dataResponse received from a network request
