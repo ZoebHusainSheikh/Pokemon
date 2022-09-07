@@ -81,9 +81,50 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         sut.displayPokemonDetails(pokemon: mockPokemon)
         // Then
         XCTAssertEqual(sut.pokemon?.name, "Test1", "displayPokemonDetails(pokemon::) should have name 'Test1'")
+    }
+    
+    func testDisplayPokemonWeight() {
+        // Given
+        let spy = PokemonDetailsBusinessLogicSpy()
+        sut.interactor = spy
+        // When
+        loadView()
+        sut.displayPokemonDetails(pokemon: mockPokemon)
+        // Then
         XCTAssertEqual(sut.pokemon?.weight, 1, "displayPokemonDetails(pokemon::) should have weight value 1")
+    }
+    
+    func testDisplayPokemonHeight() {
+        // Given
+        let spy = PokemonDetailsBusinessLogicSpy()
+        sut.interactor = spy
+        // When
+        loadView()
+        sut.displayPokemonDetails(pokemon: mockPokemon)
+        // Then
         XCTAssertEqual(sut.pokemon?.height, 2, "displayPokemonDetails(pokemon::) should have height value 2")
+    }
+    
+    func testDisplayPokemonBasenceExperience() {
+        // Given
+        let spy = PokemonDetailsBusinessLogicSpy()
+        sut.interactor = spy
+        // When
+        loadView()
+        sut.displayPokemonDetails(pokemon: mockPokemon)
+        // Then
         XCTAssertEqual(sut.pokemon?.baseExperience, 10, "displayPokemonDetails(pokemon::) should have baseExperience value 10")
+    }
+    
+    func testDisplayPokemonURL() {
+        // Given
+        let spy = PokemonDetailsBusinessLogicSpy()
+        sut.interactor = spy
+        // When
+        loadView()
+        sut.displayPokemonDetails(pokemon: mockPokemon)
+        // Then
+        XCTAssertEqual(sut.pokemon?.url, "https://pokeapi.co", "displayPokemonDetails(pokemon::) should have url value 'www.apple.com'")
     }
     
     func testNameLabel() {
