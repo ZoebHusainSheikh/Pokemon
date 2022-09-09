@@ -9,23 +9,13 @@
 import UIKit
 
 final class PokemonListWorker {
-    func fetchPokemons(request: PokemonList.GetPokemons.Request?, _ onCompletion: @escaping CompletionHandler) {
-        
-        NetworkHttpClient.shared.performAPICall(request?.url, parameters: request?.params, success: { (dataResponse) in
-            onCompletion(true, dataResponse)
-        }) { (error) in
-            print(error as Any)
-            onCompletion(false, error)
-        }
+    func fetchPokemons(request: PokemonList.GetPokemons.Request?) async throws -> (success: Bool, response: Any?)? {
+        let result = try? await NetworkHttpClient.shared.performAPICall(request?.url, parameters: request?.params)
+        return result
     }
     
-    func fetchPokemon(request: PokemonDetail.Fetch.Request?, _ onCompletion: @escaping CompletionHandler) {
-        
-        NetworkHttpClient.shared.performAPICall(request?.url, parameters: request?.params, success: { (dataResponse) in
-            onCompletion(true, dataResponse)
-        }) { (error) in
-            print(error as Any)
-            onCompletion(false, error)
-        }
+    func fetchPokemon(request: PokemonDetail.Fetch.Request?) async throws -> (success: Bool, response: Any?)? {
+        let result = try? await NetworkHttpClient.shared.performAPICall(request?.url, parameters: request?.params)
+        return result
     }
 }

@@ -27,19 +27,21 @@ class PokemonListInteractor: PokemonListBusinessLogic, PokemonListDataStore {
     // MARK: Fetch Pokemons from API
     
     func fetchPokemons(request: PokemonList.GetPokemons.Request) {
-        worker.fetchPokemons(request: request, { (status, apiResponse) in
-            
-            let response = PokemonList.GetPokemons.Response(data: apiResponse as? Data)
-            self.presenter?.presentPokemons(response: response)
-        })
+        Task {
+            if let (_, apiResponse) = try await worker.fetchPokemons(request: request) {
+                let response = PokemonList.GetPokemons.Response(data: apiResponse as? Data)
+                self.presenter?.presentPokemons(response: response)
+            }
+        }
         
     }
     
     func fetchPokemon(request: PokemonDetail.Fetch.Request) {
-        worker.fetchPokemon(request: request, { (status, apiResponse) in
-            
-            let response = PokemonDetail.Fetch.Response(data: apiResponse as? Data, pokemonURL: request.url)
-            self.presenter?.pokemonDetail(response: response)
-        })
+        Task {
+            if let (_, apiResponse) = try await worker.fetchPokemon(request: request) {
+                let response = PokemonDetail.Fetch.Response(data: apiResponse as? Data, pokemonURL: request.url)
+                self.presenter?.pokemonDetail(response: response)
+            }
+        }
     }
 }
