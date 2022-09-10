@@ -7,13 +7,11 @@ target 'Pokemon' do
 
   # Pods for Pokemon
     pod 'SDWebImage'
+    pod 'RxSwift'
+    pod 'RxCocoa'
 
   target 'PokemonTests' do
     inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'PokemonUITests' do
     # Pods for testing
   end
 
